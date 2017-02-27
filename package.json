@@ -13,10 +13,13 @@
     "type": "git",
     "url": "git+https://github.com/aleag/estudiar-las-rutas-en-expressjs-alejandro-carlos-samuel-35l2.git"
   },
-  "author": "Alejandro Arzola García <alu0100814712@ull.edu.es>", "Carlos de Armas Hernández <alu0100816167@ull.edu.es>", "Samuel Valcárcel Arce <samuvalcarcel@gmail.com>",
+  "author": "Alejandro Arzola García <alu0100814712@ull.edu.es>, Carlos de Armas Hernández <alu0100816167@ull.edu.es>, Samuel Valcárcel Arce <samuvalcarcel@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/aleag/estudiar-las-rutas-en-expressjs-alejandro-carlos-samuel-35l2/issues"
   },
-  "homepage": "https://github.com/aleag/estudiar-las-rutas-en-expressjs-alejandro-carlos-samuel-35l2#readme"
+  "homepage": "https://github.com/aleag/estudiar-las-rutas-en-expressjs-alejandro-carlos-samuel-35l2#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
 }
