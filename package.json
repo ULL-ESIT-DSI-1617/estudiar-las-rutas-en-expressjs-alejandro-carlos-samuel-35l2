@@ -1,0 +1,22 @@
+{
+  "name": "estudiar-las-rutas-en-expressjs-alejandro-carlos-samuel-35l2",
+  "version": "1.0.0",
+  "description": "Práctica #03 - Desarrollo de Sistemas Informáticos",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aleag/estudiar-las-rutas-en-expressjs-alejandro-carlos-samuel-35l2.git"
+  },
+  "author": "Alejandro Arzola García <alu0100814712@ull.edu.es>", "Carlos de Armas Hernández <alu0100816167@ull.edu.es>", "Samuel Valcárcel Arce <samuvalcarcel@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aleag/estudiar-las-rutas-en-expressjs-alejandro-carlos-samuel-35l2/issues"
+  },
+  "homepage": "https://github.com/aleag/estudiar-las-rutas-en-expressjs-alejandro-carlos-samuel-35l2#readme"
+}
