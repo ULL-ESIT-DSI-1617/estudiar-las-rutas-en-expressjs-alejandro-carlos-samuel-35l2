@@ -56,7 +56,7 @@ Donde:
 
 El siguiente [ejemplo](https://github.com/ULL-ESIT-DSI-1617/estudiar-las-rutas-en-expressjs-alejandro-carlos-samuel-35l2/blob/master/src/example_1.js) ilustra la definición de direccionamiento básico.
 
-## Métodos de ruta
+### Métodos de ruta
 
 Un método de ruta se deriva de uno de los métodos de HTTP y se adjunta a una instancia de la clase **express**.
 
@@ -91,7 +91,7 @@ app.all('/secret', function (req, res, next) {
 
 En el ejemplo de arriba, el manejador de ruta se ejecutará para las peticiones a "/secret" independientemente del método HTTP que se utilice (GET, POST, PUT, DELETE ... etc.).
 
-## Vías de acceso de ruta
+### Vías de acceso de ruta
 
 Las vías de acceso de ruta, en combinación con un método de solicitud, definen los punto finales en los que pueden realizarse las solicitudes. Las vías de acceso de ruta pueden ser series, patrones de serie o expresiones regulares.
 
@@ -127,7 +127,7 @@ app.get(/a/, function(req, res) {
 });
 ```
 
-## Manejadores de rutas
+### Manejadores de rutas
 
 Puede proporcionar varias funciones de devolución de llamada que se comportan como `middleware` para manejar una solicitud. La única excepción es que estas devoluciones de llamada pueden invocar `next('route')` para omitir el resto de las devoluciones de llamada de ruta. Puede utilizar este mecanismo para imponer condiciones previas en una ruta y, a continuación, pasar el control a las rutas posteriores si no hay motivo para continuar con la ruta actual.
 
@@ -151,7 +151,7 @@ var cb2 = function (req, res) {
 app.get('/example/c', [cb0, cb1, cb2]);
 ```
 
-## Métodos de respuesta
+### Métodos de respuesta
 
 Los métodos en el objeto de respuesta (res) de la tabla siguiente pueden enviar una respuesta al cliente y terminar el ciclo de solicitud/respuestas. Si ninguno de estos métodos se invoca desde un manejador de rutas, la solicitud de cliente se dejará colgada.
 
@@ -166,6 +166,22 @@ Los métodos en el objeto de respuesta (res) de la tabla siguiente pueden enviar
 |res.send()      | Envía una respuesta de varios tipos.|
 |res.sendFile    | Envía un archivo como una secuencia de octetos.|
 |res.sendStatus()|Establece el código de estado de la respuesta y envía su representación de serie como el cuerpo de respuesta.|
+
+
+## Utilización del middleware
+
+Express es una infraestructura web de direccionamiento y middleware que tiene una funcionalidad mínima propia: una aplicación Express es fundamentalmente una serie de llamadas a funciones de middleware.
+
+Las funciones de middleware son funciones que tienen acceso al objeto de solicitud (req), al objeto de respuesta (res) y a la siguiente función de middleware en el ciclo de solicitud/respuestas de la aplicación. La siguiente función de middleware se denota normalmente con una variable denominada `next`.
+
+Las funciones de middleware pueden realizar las siguientes tareas:
+
+* Ejecutar cualquier código.
+* Realizar cambios en la solicitud y los objetos de  respuesta.
+* Finalizar el ciclo de solicitud/respuestas.
+* Invocar la siguiente función de middleware en la pila.
+
+Si la función de middleware actual no finaliza el ciclo de solicitud/respuestas, debe invocar `next()` para pasar el control a la siguiente función de middleware. De lo contrario, la solicitud quedará colgada.
 
 ### Middleware de nivel de aplicación
 
@@ -209,3 +225,4 @@ app.use('/user/:id', function(req, res, next) {
   next();
 });
 ```
+
