@@ -167,3 +167,45 @@ Los métodos en el objeto de respuesta (res) de la tabla siguiente pueden enviar
 |res.sendFile    | Envía un archivo como una secuencia de octetos.|
 |res.sendStatus()|Establece el código de estado de la respuesta y envía su representación de serie como el cuerpo de respuesta.|
 
+### Middleware de nivel de aplicación
+
+Es posible enlazar el middleware de nivel de aplicación a una instancia del objeto de aplicación utilizando las funciones `app.use()` y `app.METHOD()`, donde METHOD es el método HTTP de la solicitud que maneja el middleware (GET, POST, PUT ... etc.).
+
+El siguiente ejemplo muestra una función de middleware que se ejecuta cada vez que la aplicación recibe una solicitud:
+
+```javascript
+var app = express();
+
+app.use(function (req, res, next) {
+  console.log('Time:', Date.now());
+  next();
+});
+```
+
+El siguiente ejemplo muestra una función middleware en la ruta '/user/:id'. La función middleware se ejecuta para cualquier tipo de solicitud HTTP en dicha ruta.
+```javascript
+app.use('/user/:id', function (req, res, next) {
+  console.log('Request Type:', req.method);
+  next();
+});
+```
+
+Este ejemplo muestra una ruta y su función de manejador (sistema de middleware). La función maneja las solicitudes GET a la vía de acceso /user/:id.
+
+```javascript
+app.get('/user/:id', function (req, res, next) {
+  res.send('USER');
+});
+```
+
+En este ejemplo, se muestra la carga de una serie de funciones de middleware en un punto de montaje. Ilustra una subpila de middleware que imprime información de solicitud para cualquier tipo de solicitud HTTP en la vía de acceso /user/:id.
+
+```javascript
+app.use('/user/:id', function(req, res, next) {
+  console.log('Request URL:', req.originalUrl);
+  next();
+}, function (req, res, next) {
+  console.log('Request Type:', req.method);
+  next();
+});
+```
