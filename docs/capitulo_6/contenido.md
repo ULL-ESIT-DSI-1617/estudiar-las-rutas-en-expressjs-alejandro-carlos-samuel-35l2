@@ -55,3 +55,33 @@ Donde:
 * `HANDLER` es la función que se ejecuta cuando se   correlaciona la ruta.
 
 El siguiente [ejemplo](https://github.com/ULL-ESIT-DSI-1617/estudiar-las-rutas-en-expressjs-alejandro-carlos-samuel-35l2/blob/master/src/example_1.js) ilustra la definición de direccionamiento básico.
+
+## Métodos de ruta
+
+## Vías de acceso de ruta
+
+## Manejadores de rutas
+
+Puede proporcionar varias funciones de devolución de llamada que se comportan como `middleware` para manejar una solicitud. La única excepción es que estas devoluciones de llamada pueden invocar `next('route')` para omitir el resto de las devoluciones de llamada de ruta. Puede utilizar este mecanismo para imponer condiciones previas en una ruta y, a continuación, pasar el control a las rutas posteriores si no hay motivo para continuar con la ruta actual.
+
+A continuación se muestra como una matriz de funciones de devolución de llamada puede manejar una ruta:
+
+```javascript
+var cb0 = function (req, res, next) {
+  console.log('CB0');
+  next();
+}
+
+var cb1 = function (req, res, next) {
+  console.log('CB1');
+  next();
+}
+
+var cb2 = function (req, res) {
+  res.send('Hello from C!');
+}
+
+app.get('/example/c', [cb0, cb1, cb2]);
+```
+
+## Métodos de respuesta
