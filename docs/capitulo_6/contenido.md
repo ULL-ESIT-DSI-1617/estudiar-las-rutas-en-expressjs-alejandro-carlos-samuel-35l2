@@ -55,3 +55,41 @@ Donde:
 * `HANDLER` es la función que se ejecuta cuando se   correlaciona la ruta.
 
 El siguiente [ejemplo](https://github.com/ULL-ESIT-DSI-1617/estudiar-las-rutas-en-expressjs-alejandro-carlos-samuel-35l2/blob/master/src/example_1.js) ilustra la definición de direccionamiento básico.
+
+## Métodos de ruta
+
+## Vías de acceso de ruta
+
+Las vías de acceso de ruta, en combinación con un método de solicitud, definen los punto finales en los que pueden realizarse las solicitudes. Las vías de acceso de ruta pueden ser series, patrones de serie o expresiones regulares.
+
+Estos son algunos ejemplos de vías de acceso de rutas basadas en series.
+
+Esta vía de acceso de ruta coincidirá con las solicitudes a `/docs`.
+
+```
+app.get('/docs', function (req, res) {
+  res.send('docs');
+});
+```
+
+Estos son algunos ejemplos de vías de acceso de ruta basadas en patrones de serie.
+
+Esta vía de acceso de ruta coincidirá con `acd` y `abcd`.
+
+```
+app.get('/ab?cd', function(req, res) {
+  res.send('ab?cd');
+});
+```
+
+>Los caracteres ?, +, * y () son subconjuntos de sus contrapartidas de expresiones regulares. El guión (-) y el punto (.) se interpretan literalmente en las vías de acceso basadas en series.
+
+Ejemplos de vías de acceso de ruta basadas en expresiones regulares:
+
+Esta vía de acceso de ruta coincidirá con cualquier valor con una “a” en el nombre de la ruta.
+
+```
+app.get(/a/, function(req, res) {
+  res.send('/a/');
+});
+```
