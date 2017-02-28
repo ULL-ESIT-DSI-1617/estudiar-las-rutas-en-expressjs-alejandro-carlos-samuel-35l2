@@ -126,3 +126,44 @@ app.get(/a/, function(req, res) {
   res.send('/a/');
 });
 ```
+
+## Manejadores de rutas
+
+Puede proporcionar varias funciones de devolución de llamada que se comportan como `middleware` para manejar una solicitud. La única excepción es que estas devoluciones de llamada pueden invocar `next('route')` para omitir el resto de las devoluciones de llamada de ruta. Puede utilizar este mecanismo para imponer condiciones previas en una ruta y, a continuación, pasar el control a las rutas posteriores si no hay motivo para continuar con la ruta actual.
+
+A continuación se muestra como una matriz de funciones de devolución de llamada puede manejar una ruta:
+
+```javascript
+var cb0 = function (req, res, next) {
+  console.log('CB0');
+  next();
+}
+
+var cb1 = function (req, res, next) {
+  console.log('CB1');
+  next();
+}
+
+var cb2 = function (req, res) {
+  res.send('Hello from C!');
+}
+
+app.get('/example/c', [cb0, cb1, cb2]);
+```
+
+## Métodos de respuesta
+
+Los métodos en el objeto de respuesta (res) de la tabla siguiente pueden enviar una respuesta al cliente y terminar el ciclo de solicitud/respuestas. Si ninguno de estos métodos se invoca desde un manejador de rutas, la solicitud de cliente se dejará colgada.
+
+| Método         | Descripción                          |
+|----------------|--------------------------------------|
+|res.download()  | Solicita un archivo para descargarlo.|
+|res.end()       | Finaliza el proceso de respuesta.    |
+|res.json()      | Envía una respuesta JSON.            |
+|res.jsonp()     | Envía una respuesta JSON con soporte JSONP.|
+|res.redirect()  | Redirecciona una solicitud.|
+|res.render()    | Representa una plantilla de vista.|
+|res.send()      | Envía una respuesta de varios tipos.|
+|res.sendFile    | Envía un archivo como una secuencia de octetos.|
+|res.sendStatus()|Establece el código de estado de la respuesta y envía su representación de serie como el cuerpo de respuesta.|
+
