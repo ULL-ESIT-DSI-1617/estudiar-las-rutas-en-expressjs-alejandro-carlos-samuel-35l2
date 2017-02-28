@@ -53,3 +53,5 @@ Donde:
 * `METHOD` es un método de solicitud HTTP.
 * `PATH` es una vía de acceso en el servidor.
 * `HANDLER` es la función que se ejecuta cuando se   correlaciona la ruta.
+
+El siguiente [ejemplo](https://github.com/ULL-ESIT-DSI-1617/estudiar-las-rutas-en-expressjs-alejandro-carlos-samuel-35l2/blob/master/src/example_1.js) ilustra la definición de direccionamiento básico.
