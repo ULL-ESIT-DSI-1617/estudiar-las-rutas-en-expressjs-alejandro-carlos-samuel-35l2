@@ -248,3 +248,27 @@ app.use(cookieParser());
 ```
 
 Para ver una lista parcial de las funciones de middleware de terceros que más se utilizan con Express, consulte: [Middleware de terceros](http://expressjs.com/es/resources/middleware.html).
+
+## Router
+
+Un `router` es una instancia aislada de middleware y rutas. Se puede pensar en ella como una "mini-aplicación", capaz sólo de realizar middleware y funciones de enrutamiento. Cada aplicación Express tiene un enrutador de aplicaciones incorporado.
+
+Un enrutador se comporta como el propio middleware, por lo que puede utilizarlo como argumento para `app.use()` o como argumento para el método `use()` de otro enrutador.
+
+El objeto `express` de nivel superior tiene un método `Router()` que crea un nuevo objeto router.
+
+Una vez que haya creado un objeto router, puede agregar rutas intermedias y de método HTTP (como `get`, `put`, `post`, etc.) como una aplicación. Por ejemplo:
+
+```javascript
+// invoked for any requests passed to this router
+router.use(function(req, res, next) {
+  // .. some logic here .. like any other middleware
+  next();
+});
+
+// will handle any request that ends in /events
+// depends on where the router is "use()'d"
+router.get('/events', function(req, res, next) {
+  // ..
+});
+```
