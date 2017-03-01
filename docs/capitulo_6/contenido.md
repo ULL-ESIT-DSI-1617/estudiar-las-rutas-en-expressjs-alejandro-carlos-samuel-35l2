@@ -248,3 +248,45 @@ app.use(cookieParser());
 ```
 
 Para ver una lista parcial de las funciones de middleware de terceros que más se utilizan con Express, consulte: [Middleware de terceros](http://expressjs.com/es/resources/middleware.html).
+
+## Router
+
+Un `router` es una instancia aislada de middleware y rutas. Se puede pensar en ella como una "mini-aplicación", capaz sólo de realizar middleware y funciones de enrutamiento. Cada aplicación Express tiene un enrutador de aplicaciones incorporado.
+
+Un enrutador se comporta como el propio middleware, por lo que puede utilizarlo como argumento para `app.use()` o como argumento para el método `use()` de otro enrutador.
+
+El objeto `express` de nivel superior tiene un método `Router()` que crea un nuevo objeto router.
+
+Una vez que haya creado un objeto router, puede agregar rutas intermedias y de método HTTP (como `get`, `put`, `post`, etc.) como una aplicación. Por ejemplo:
+
+```javascript
+// invoked for any requests passed to this router
+router.use(function(req, res, next) {
+  // .. some logic here .. like any other middleware
+  next();
+});
+
+// will handle any request that ends in /events
+// depends on where the router is "use()'d"
+router.get('/events', function(req, res, next) {
+  // ..
+});
+```
+
+### Métodos
+
+>router.all(path, [callback, ...] callback)
+
+Este método es igual que los métodos `router.METHOD()`, excepto que coincide con todos los métodos HTTP.
+
+>router.METHOD(path, [callback, ...] callback)
+
+Los métodos `router.METHOD()` proporcionan la funcionalidad de enrutamiento en Express, donde METHOD es uno de los métodos HTTP, como GET, PUT, POST y así sucesivamente, en minúsculas. Por lo tanto, los métodos actuales son `router.get()`, `router.post()`, `router.put()`, y así sucesivamente.
+
+>router.route(path)
+
+Devuelve una instancia de una sola ruta que puede utilizar para manejar verbos HTTP con middleware opcional. Utilice `router.route()` para evitar la asignación de rutas duplicadas y, por lo tanto, errores de escritura.
+
+>router.use([path], [function, ...] function)
+
+Utiliza la función o funciones de middleware especificadas, con la ruta de acceso de montaje opcional, cuyo valor predeterminado es "/".

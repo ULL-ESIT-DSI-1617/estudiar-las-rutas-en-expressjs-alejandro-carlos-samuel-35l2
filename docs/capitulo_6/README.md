@@ -10,3 +10,5 @@ En el presente capítulo se hablarán de las siquientes secciones:
   * Guía de enrutamiento.
   * Uso de Middleware.
   * Documentación de la API de enrutamiento.
+
+A lo largo de la documentación se aportan ejemplos sobre los temas tratados. Para más ejemplos, visitar la carpeta `src/` de este repositorio.
