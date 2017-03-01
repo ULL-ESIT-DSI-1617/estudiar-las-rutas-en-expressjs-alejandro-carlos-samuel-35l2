@@ -28,7 +28,7 @@ https://ull-esit-dsi-1617.github.io/estudiar-las-rutas-en-expressjs-alejandro-ca
 
 # GitBook:
 
-* **TODO**
+https://aleag.gitbooks.io/prct03-estudiar-rutas-expressjs/content/
 
 # Despliegue en [iaas.ull.es](iaas.ull.es):
 
