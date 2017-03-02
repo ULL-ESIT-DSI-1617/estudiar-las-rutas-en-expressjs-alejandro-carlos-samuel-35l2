@@ -32,7 +32,9 @@ https://aleag.gitbooks.io/prct03-estudiar-rutas-expressjs/content/
 
 # Despliegue en [iaas.ull.es](iaas.ull.es):
 
-* **TODO**
+* [Máquina iaas Alejandro](http://10.6.128.77:8081/)
+* [Máquina iaas Carlos](http://10.6.129.242:8085/)
+* [Máquina iaas Samuel](http://10.6.128.137:8081/)
 
 # URL del repositorio git:
 https://github.com/ULL-ESIT-DSI-1617/estudiar-las-rutas-en-expressjs-alejandro-carlos-samuel-35l2
